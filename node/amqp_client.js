@@ -1,16 +1,16 @@
- var amqp = require('amqp');
- var sys = require('sys');
- var connection = amqp.createConnection({ host: 'localhost' });
-
- connection.addListener('ready', function () {
-    // Create a queue and bind to all messages.
-    // Use the default 'amq.topic' exchange
-    var q = connection.queue('hello', { autoDelete: false, durable: false, exclusive: false });
-    // Catch all messages
+var amqp = require('amqp');
+var sys = require('sys');
+var connection = amqp.createConnection({ host: 'localhost' });
+connection.addListener('ready', function () {
+	
+	//listen for telemetry messages
+    var q = connection.queue('t1', { autoDelete: false, durable: false, exclusive: false });
     q.bind('#');
 
-    // Receive messages
+    // handle incoming telemetry
     q.subscribe(function (message) {
-      console.log(message.data.toString());
+		console.log(message.data.toString());
+		var obj = JSON.parse(message.data);
+		console.log(obj);
     });
- });
+});
