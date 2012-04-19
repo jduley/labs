@@ -8,5 +8,4 @@ node - contains node scripts
 rabbitmq - contains messaging scripts to simulate traffic
 	Recv - receive messages from the queue
 	Send - send messages on the queue
-	Sim	- simulates telemetry traffic.  will publish anywhere from 100 to 1000 messages 
-		sporadically every 1 to 5 seconds.  
+	Sim	- simulates telemetry traffic.  will publish anywhere from 100 to 1000 messages sporadically every 1 to 5 seconds.  
